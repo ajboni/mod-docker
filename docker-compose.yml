@@ -1,0 +1,47 @@
+version: "3.8"
+services:
+  mod-setup:
+    container_name: mod-setup
+    # stdin_open: true # docker run -i
+    # tty: true # docker run -t
+    environment:
+      - USER_NAME=${USER_NAME}
+      - GROUP_NAME=${GROUP_NAME}
+      - USER_ID=${USER_ID}
+      - GROUP_ID=${GROUP_ID}
+    volumes:
+      - mod-docker-home:/home/${USER_NAME}
+    build:
+      context: ./mod-setup
+  mod-host:
+    container_name: mod-host
+    environment:
+      - USER_NAME=${USER_NAME}
+      - GROUP_NAME=${GROUP_NAME}
+      - USER_ID=${USER_ID}
+      - GROUP_ID=${GROUP_ID}
+    volumes:
+      - mod-docker-home:/home/${USER_NAME}
+      - /dev/shm:/dev/shm:rw
+    build:
+      context: ./mod-host
+    ulimits:
+      memlock: 819200000
+      rtprio: 99
+  mod-ui:
+    container_name: mod-ui
+    environment:
+      - USER_NAME=${USER_NAME}
+      - GROUP_NAME=${GROUP_NAME}
+      - USER_ID=${USER_ID}
+      - GROUP_ID=${GROUP_ID}
+    volumes:
+      - mod-docker-home:/home/${USER_NAME}
+      - /dev/shm:/dev/shm:rw
+    build:
+      context: ./mod-ui
+    ulimits:
+      memlock: 819200000
+      rtprio: 99
+volumes:
+  mod-docker-home:
