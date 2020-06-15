@@ -4,6 +4,5 @@ export USER_ID=$(id -u)
 export GROUP_ID=$(id -g)
 export GROUP_NAME=$(id -gn)
 
-docker-compose up  --build mod-setup
-docker-compose up --build mod-host mod-ui
-# docker-compose up  --build mod-ui
+docker build  --rm -f "mod-ui/Dockerfile" -t mod-ui "mod-ui"
+docker-compose up  --no-build mod-ui
