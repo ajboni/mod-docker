@@ -27,3 +27,4 @@ Also some plugins does not provide modguis so thy will be 'ugly'. Also some migh
 On another topic, I couldn't make mod-ui talk to mod-host other than localhost, thats why the container is just one. It might be nice to have them separated in the future.
 
 ![Mod-Docker](/img/img.png)
+![Mod-Docker](/img/img2.png)
