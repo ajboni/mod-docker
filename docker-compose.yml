@@ -11,8 +11,6 @@ services:
       - USER_ID=${USER_ID}
       - GROUP_ID=${GROUP_ID}
     volumes:
-      # - host:/mod/mod-host
-      # - lv2:/usr/lib/lv2:rw
       - /dev/shm:/dev/shm:rw
     build:
       context: ./mod-host
@@ -35,8 +33,6 @@ services:
       - USER_ID=${USER_ID}
       - GROUP_ID=${GROUP_ID}
     volumes:
-      # - ui:/mod/mod-ui
-      # - lv2:/usr/lib/lv2
       - /dev/shm:/dev/shm:rw
     build:
       context: ./mod-ui
