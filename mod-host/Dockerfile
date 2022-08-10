@@ -9,6 +9,7 @@ RUN apt-get update && apt-get install -q -y wget
 RUN dpkg --purge kxstudio-repos-gcc5
 RUN wget https://launchpad.net/~kxstudio-debian/+archive/kxstudio/+files/kxstudio-repos_10.0.3_all.deb
 RUN dpkg -i kxstudio-repos_10.0.3_all.deb
+RUN apt-get -y autoremove --purge 
 RUN apt-get update && apt-get install -y --no-install-recommends \
 	jackd2 git liblilv-dev libreadline-dev lilv-utils libjack-jackd2-dev python python3.6 python3.6
 
